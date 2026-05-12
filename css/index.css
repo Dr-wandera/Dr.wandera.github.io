@@ -103,3 +103,18 @@
  .btn-forget:hover {
   text-decoration: underline;
  }
+
+ @media (max-width: 768px) {
+  .main {
+   flex-direction: column;
+  }
+  .logo {
+   width: 100%;
+   padding: 30%;
+  }
+  .card{
+   width: 100%;
+   padding: 25px;
+  }
+
+ }
