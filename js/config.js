@@ -12,3 +12,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth= firebase.auth()
 console.log("connecting to firebase")
+
+function  logout(){
+    firebase.auth().signOut().then(function(){
+        window.location.href="index.html";
+    })
+        .catch(error => {
+            alert("Error occurred while try to logout");
+            console.log(error);
+        })
+}

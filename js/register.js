@@ -13,8 +13,9 @@ btncreate.addEventListener('click', () =>{
     else {
         if (txtPassword==txtConfirmPassword){
             let emailId=txtEmail.replace(/\./g,"_dot_").replace(/@/g,"_at_");
-            let status="active";
-            let timeNow= Date.now()
+            let status="active"
+            let timeNow= Date.now();
+            let role = "Admin"
             firebase.auth().createUserWithEmailAndPassword(txtEmail,txtPassword)
                 .then((userCredential) => {
                     firebase.database().ref('userDetail/' + emailId).set({
@@ -23,9 +24,11 @@ btncreate.addEventListener('click', () =>{
                         Email: txtEmail,
                         Password: txtPassword,
                         ConfirmPassword: txtConfirmPassword,
-                        status: status,
+                        Status: status,
                         createdBy: txtEmail,
+                        Role: role,
                         createdAt: timeNow,
+
                     })
 
                     alert("Account created successfully.")
