@@ -19,23 +19,27 @@
     <div class="card">
         <h2>Reset Password</h2>
 
-        <form enctype="multipart/form-data">
             <div class="form-group">
                 <label class="label">Enter Email</label>
-                <input class="input" type="" name="" placeholder="example@gmail.com">
+                <input class="input" type="" name="" placeholder="example@gmail.com" id="txtEmail">
             </div>
-            <button class="btn-primary"> send reset link</button>
+            <button class="btn-primary" id="btnReset"> send reset link</button>
 
             <a
             href="index.html" class="btn-register">Back to log in
             </a>
 
-        </form>
         <p>
             A reset link will be sent if you exist in database
         </p>
 
     </div>
 </div>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/reset.js"></script>
 </body>
 </html>

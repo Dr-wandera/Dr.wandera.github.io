@@ -16,30 +16,35 @@
 
     <div class="card">
 
-        <form enctype="multipart/form-data">
 
             <div class="form-group">
                 <h2>Welcome to Kibabii Industrial Training</h2>
 
                 <label class="label"> Enter username</label>
-                <input class="input" type="" name="" placeholder="username">
+                <input class="input" type="" name="" placeholder="username" id="txtUsername">
             </div>
 
             <div class="form-group">
                 <label class="label"> Enter password</label>
-                <input class="input" type="" password="" placeholder="*****">
+                <input class="input" type="" password="" placeholder="*****" id="txtPassword">
             </div>
 
-            <button class="btn-primary"> Log in</button>
+            <button class="btn-primary" id="btnLogin"> Log in</button>
 
             <a
              class="btn-register" href="register.html"> Don't have an Account? Register now
             </a>
 
             <a class="btn-forget" href="reset.html">Forgot password</a>
-        </form>
+
 
     </div>
 </div>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
