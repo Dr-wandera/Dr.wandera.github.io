@@ -1,79 +1,44 @@
-
-let btnLogin = document.getElementById("btnLogin");
-
-btnLogin.addEventListener("click", () => {
-
-    let username = document.getElementById("txtUsername").value;
-    let password = document.getElementById("txtPassword").value;
-
-    btnLogin.innerHTML = "please wait ...";
-
-    if (txtUsername == "" || txtPassword == "") {
-
-        alert("Please fill out all fields.");
-        btnLogin.innerHTML = "Log in";
-
-    } else {
-
+let btnlogin = document.getElementById('btnlogin')
+btnlogin.addEventListener("click", () =>{
+    let txtusername = document.getElementById('txtusername').value
+    let txtpass = document.getElementById('txtpass').value
+    btnlogin.innerHTML = "Please wait ..."
+    if (txtusername == "" || txtpass == ""){
+        alert("Please fill all details.")
+    }else{
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-
-            .then(() => {
-
-                return firebase.auth().signInWithEmailAndPassword(username, password)
-
+            .then(() =>{
+                return firebase.auth().signInWithEmailAndPassword(txtusername,txtpass)
             })
-
             .then((userCredential) => {
-
-                let emailId = username
-                    .replace(/\./g, "_dot_")
-                    .replace(/@/g, "_at_");
-
-                return firebase.database()
-                    .ref("userDetails/" + emailId)
-                    .once("value")
-
+                let emailid = txtusername.replace(/\./g, "_dot_").replace(/@/g, "_at_")
+                return firebase.database().ref("userDetails/" + emailid).once("value")
             })
-
-            .then((snapshot) => {
-
-                const userDetails = snapshot.val();
-
-                const role = userDetails.Role;
-                const status = userDetails.status;
-
-                if (status == "Active") {
-
-                    if (role == "Admin") {
-
-                        window.location.href = "dashboard.html";
-
-                    } else if (role == "student") {
-
-                        //student
-                        alert("Student logged in!.");
-
-                    } else {
-
-                        //active with no role
-                        alert("No Role added connect with admin!");
-
+            .then((snapshot) =>{
+                const userDetails = snapshot.val()
+                const role = userDetails.Role
+                const status = userDetails.Status
+                if (status == "active"){
+                    if(role == "Admin"){
+                        // admin
+                        window.location.href = "dashboard.html"
+                    }else if(role == "Student"){
+                        // student
+                        alert("Student logged in ")
+                    }else{
+                        // active users with no roles
+                        alert("No role added connect with admin")
                     }
 
-                } else {
-
-                    //inactive account
-                    alert("Account blocked contact admin!");
-
+                }else{
+                    // inactive account
+                    alert("account bloked connnect with admin")
                 }
-
             })
-
-            .catch((error) => {
-
-                alert(error.message);
-                btnLogin.innerHTML = "Log in";
-
+            .catch((error) =>{
+                alert("Wrong Password")
+                //console.log(error)
+                btnlogin.innerHTML = "Log in"
             })
     }
-});
+})

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Course Dashboard</title>
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
@@ -14,7 +15,7 @@
         <img src="media/logo.png" alt="logo" width="20%">
     </div>
     <div class="user">
-        <label id="lbusername">username</label>
+        <label id="lbUsername">username</label>
     </div>
 </div>
 
@@ -22,12 +23,12 @@
 <header class="header">
     <button class="menu-toggle">☰</button>
     <nav class="nav">
-        <a href="#">Dashboard</a>
-        <a href="courses.html">Courses</a>
-        <a href="students.html">Students</a>
-        <a href="admins.html">Admins</a>
-        <a href="gps.html">GPS</a>
-        <a href="reports.html">Reports</a>
+        <a href="courses.html">Dashboard</a>
+        <a href="students.html">Courses</a>
+        <a href="admins.html">Students</a>
+        <a href="gps.htm">Reports</a>
+        <a href="reports.htm">Reports</a>
+
         <a href="#" onclick="logout()">Logout</a>
     </nav>
 </header>
@@ -37,15 +38,15 @@
 
     <!-- Cards -->
     <div class="cards-grid">
-        <div class="card"><h3>Students</h3><p class="stat-number">350</p></div>
-        <div class="card"><h3>Courses</h3><p class="stat-number">25</p></div>
-        <div class="card"><h3>Lecturers</h3><p class="stat-number">18</p></div>
+        <div class="card"><h3>courses</h3><p class="stat-number">350</p></div>
+        <div class="card"><h3>active</h3><p class="stat-number">25</p></div>
+        <div class="card"><h3>past</h3><p class="stat-number">18</p></div>
         <div class="card"><h3>Approvals</h3><p class="stat-number">7</p></div>
     </div>
 
     <!-- Table -->
     <div class="card">
-        <h2>Manage Students</h2>
+        <h2>Active Courses</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -62,7 +63,7 @@
 
     <!-- Form -->
     <div class="card">
-        <h2>Add Student</h2>
+        <h2>Add course</h2>
         <form>
             <div class="form-group">
                 <label>Full Name</label>
@@ -86,10 +87,13 @@
 <footer class="footer">
     <p>© 2026 Elimu Admin Panel</p>
 </footer>
+
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
 <script src="js/config.js"></script>
+
+
 <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav');
@@ -97,13 +101,13 @@
         nav.classList.toggle('active');
         menuToggle.textContent = nav.classList.contains('active') ? "✖" : "☰";
     });
+    let lbUsername =document.getElementById("lbUsername");
+    auth.onAuthStateChanged(function (user)  {
 
-    let lbusername = document.getElementById('lbUsername')
-    auth.onAuthStateChanged( function (user) {
         if (user) {
-            lbusername.innerHTML= user.email
-        }else{
-            window.location.href ="index.html"
+            lbUsername.innerHTML = user.email;
+        } else {
+            window.location.href = "/index.html";
         }
     })
 </script>
